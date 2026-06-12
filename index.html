@@ -7,6 +7,7 @@
     <meta name="keywords" content="portfólio, desenvolvimento, web, github, estudante, ADS">
     <meta name="author" content="Geovanna">
     <title>PortfolioHUB - Geovanna</title>
+    <link rel="stylesheet" href="css/github-repos.css">
     <style>
         * {
             margin: 0;
@@ -426,6 +427,7 @@
     <nav>
         <a href="#sobre">Sobre</a>
         <a href="#disciplinas">Disciplinas</a>
+        <a href="#projetos">Projetos</a>
         <button class="theme-toggle" onclick="toggleTheme()">💻</button>
         <a href="#aprendizado">Aprendizado</a>
         <a href="#contato">Contato</a>
@@ -479,6 +481,23 @@
             </div>
         </section>
 
+        <!-- Projetos do GitHub -->
+        <section id="projetos">
+            <h2>🚀 Meus Projetos no GitHub</h2>
+            
+            <!-- Projetos Acadêmicos -->
+            <h3 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">📖 Projetos Acadêmicos</h3>
+            <div id="github-academicos" class="repos-container">
+                <p style="text-align: center; color: #999;">Carregando repositórios acadêmicos...</p>
+            </div>
+
+            <!-- Projetos Pessoais -->
+            <h3 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">💡 Projetos Pessoais</h3>
+            <div id="github-pessoais" class="repos-container">
+                <p style="text-align: center; color: #999;">Carregando repositórios pessoais...</p>
+            </div>
+        </section>
+
         <!-- Aprendizado -->
         <section id="aprendizado">
             <h2>🎓 Meu Aprendizado</h2>
@@ -524,7 +543,7 @@
                 <div class="social-links">
                     <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-                    <a href="geovannagabrielle191@gmail.com" target="_blank">Email</a>
+                    <a href="mailto:geovannagabrielle191@gmail.com" target="_blank">Email</a>
                 </div>
             </div>
         </section>
@@ -537,7 +556,7 @@
             <a href="mailto:geovannagabrielle191@gmail.com" target="_blank">Email</a>
         </div>
         <p>&copy; 2026 PortfolioHUB • Geovanna</p>
-        <p>Desenvolvido com HTML, CSS e JavaScript</p>
+        <p>Desenvolvido com HTML, CSS, JavaScript e integração com API do GitHub</p>
     </footer>
 
     <script>
@@ -570,5 +589,8 @@
             });
         });
     </script>
+
+    <!-- Integração com API do GitHub -->
+    <script src="js/github-integration.js"></script>
 </body>
 </html>

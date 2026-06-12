@@ -1,0 +1,234 @@
+/**
+ * GitHub Repositories Styling - PortfolioHUB
+ * 
+ * Estilos para os cards de repositórios buscados da API do GitHub
+ * Mantém consistência com o design do portfólio
+ */
+
+/* Container de repositórios */
+.repos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Card individual de repositório */
+.repo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-left: 5px solid #7c3aed;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode .repo-card {
+    background: #1a1a2e;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.15);
+    border-left-color: #a78bfa;
+}
+
+.repo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+    transition: right 0.5s ease;
+}
+
+.repo-card:hover::before {
+    right: 100%;
+}
+
+.repo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(124, 58, 237, 0.2);
+}
+
+/* Header do card */
+.repo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.repo-header h4 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    flex: 1;
+}
+
+.repo-header h4 a {
+    color: #7c3aed;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .repo-header h4 a {
+    color: #a78bfa;
+}
+
+.repo-header h4 a:hover {
+    color: #ec4899;
+    text-decoration: underline;
+}
+
+/* Badge de visibilidade */
+.repo-visibility {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.repo-visibility.public {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.repo-visibility.private {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+body.dark-mode .repo-visibility.public {
+    background-color: #064e3b;
+    color: #d1fae5;
+}
+
+body.dark-mode .repo-visibility.private {
+    background-color: #78350f;
+    color: #fef3c7;
+}
+
+/* Descrição do repositório */
+.repo-description {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+    flex-grow: 1;
+}
+
+body.dark-mode .repo-description {
+    color: #aaa;
+}
+
+/* Metadados do repositório */
+.repo-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.85em;
+}
+
+body.dark-mode .repo-meta {
+    border-bottom-color: #374151;
+}
+
+.repo-language {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+}
+
+body.dark-mode .repo-language {
+    color: #aaa;
+}
+
+.language-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7c3aed;
+}
+
+.repo-stars {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.repo-updated {
+    color: #999;
+    font-size: 0.8em;
+}
+
+body.dark-mode .repo-updated {
+    color: #666;
+}
+
+/* Tópicos/Tags */
+.repo-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.topic-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #f3f4f6;
+    color: #374151;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .topic-tag {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.topic-tag:hover {
+    background-color: #7c3aed;
+    color: white;
+}
+
+/* Mensagem quando não há repositórios */
+.no-repos {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+body.dark-mode .no-repos {
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .repos-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .repo-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .repo-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
