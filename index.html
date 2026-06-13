@@ -569,6 +569,49 @@
                 }
             });
         });
+
+// Função para buscar projetos do GitHub dinamicamente
+async function carregarProjetosGithub() {
+    const usuario = 'nanaassss'; // Seu usuário do GitHub
+    const url = `https://api.github.com/users/${usuario}/repos?sort=updated&per_page=6`;
+    
+    try {
+        const resposta = await fetch(url);
+        if (!resposta.ok) {
+        throw new Error('Erro ao buscar projetos no GitHub');
+        }
+        
+        const repositorios = await resposta.json();
+        const containerProjetos = document.getElementById('container-projetos'); // ID do elemento HTML onde os cards vão ficar
+        
+        containerProjetos.innerHTML = ''; // Limpa o carregando
+        
+        repositorios.forEach(repo => {
+        // Ignora repositórios que sejam forks, focando nos seus projetos autorais
+        if (!repo.fork) {
+            const card = `
+            <div class="projeto-card">
+                <h3>${repo.name}</h3>
+                <p>${repo.description || 'Sem descrição disponível.'}</p>
+                <div class="tags">
+                <span>⭐ ${repo.stargazers_count}</span>
+                <span>Language: ${repo.language || 'HTML/CSS'}</span>
+                </div>
+                <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+            </div>
+            `;
+            containerProjetos.innerHTML += card;
+        }
+        });
+    } catch (erro) {
+        console.error('Erro na integração com o GitHub:', erro);
+        document.getElementById('container-projetos').innerHTML = '<p>Não foi possível carregar os projetos no momento.</p>';
+    }
+}
+
+// Executa a função quando a página carregar
+document.addEventListener('DOMContentLoaded', carregarProjetosGithub);
+        
     </script>
 </body>
 </html>
