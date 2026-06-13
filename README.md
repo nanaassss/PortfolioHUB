@@ -59,6 +59,16 @@ Este repositório alimenta uma página web moderna que apresenta meu progresso.
 - **LinkedIn**: [linkedin.com/in/geovanna](https://linkedin.com/in/geovanna)
 - **Email**: geovanna@email.com
 
+
+## 🔒 Gestão de Usuários e Segurança
+
+Para atender aos critérios de segurança recomendados pelo assistente Google GEMINI, as seguintes políticas foram aplicadas neste projeto:
+
+- **Controle de Acesso (RBAC)**: Permissões de escrita restritas apenas aos administradores do projeto via GitHub Teams.
+- **Branch Protection**: A branch principal (`main`/`master`) está protegida contra commits diretos. Alterações só são integradas via *Pull Requests* com aprovação de Code Review.
+- **Segurança de Código**: Varredura automática ativada através do GitHub Dependabot para detecção de vulnerabilidades em dependências.
+- **Políticas de Segredo**: Utilização de GitHub Secrets para gerenciar quaisquer chaves de API necessárias, evitando exposição de credenciais no código-fonte.
+
 ---
 
 **Versão**: 1.0 (Refinada - 1º Semestre)
