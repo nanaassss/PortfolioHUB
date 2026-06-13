@@ -289,6 +289,97 @@
             margin-bottom: 10px;
         }
 
+        /* Projects Grid - Novo estilo */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark-mode .project-card {
+            background: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.15);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+            transition: right 0.5s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            right: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(124, 58, 237, 0.2);
+        }
+
+        .project-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card .project-description {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        body.dark-mode .project-card .project-description {
+            color: #aaa;
+        }
+
+        .project-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card a:hover {
+            transform: translateX(5px);
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -409,6 +500,10 @@
             .cards-grid {
                 grid-template-columns: 1fr;
             }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Scroll behavior */
@@ -425,6 +520,7 @@
 
     <nav>
         <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
         <a href="#disciplinas">Disciplinas</a>
         <button class="theme-toggle" onclick="toggleTheme()">💻</button>
         <a href="#aprendizado">Aprendizado</a>
@@ -446,6 +542,26 @@
                     Este portfólio documenta meu progresso acadêmico e meu compromisso com o aprendizado contínuo. 
                     Aqui você encontra os projetos, exercícios e conhecimentos que estou desenvolvendo ao longo do semestre.
                 </p>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos">
+            <h2>🚀 Meus Projetos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">📁</div>
+                    <h3>PortfolioHUB</h3>
+                    <p class="project-description">Projeto acadêmico sem descrição definida no GitHub.</p>
+                    <a href="https://github.com/nanaassss/PortfolioHUB" target="_blank">Ver Repositório →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📁</div>
+                    <h3>nanaassss</h3>
+                    <p class="project-description">Projeto acadêmico sem descrição definida no GitHub.</p>
+                    <a href="https://github.com/nanaassss/nanaassss" target="_blank">Ver Repositório →</a>
+                </div>
             </div>
         </section>
 
@@ -524,7 +640,7 @@
                 <div class="social-links">
                     <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-                    <a href="geovannagabrielle191@gmail.com" target="_blank">Email</a>
+                    <a href="mailto:geovannagabrielle191@gmail.com" target="_blank">Email</a>
                 </div>
             </div>
         </section>
