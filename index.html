@@ -289,6 +289,24 @@
             margin-bottom: 10px;
         }
 
+        /* CSS DOS PROJETOS DINÂMICOS (GITHUB API) */
+        .loading-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .projeto-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.2s ease;
+        }
+        .projeto-link:hover {
+            color: var(--primary-light);
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -426,6 +444,7 @@
     <nav>
         <a href="#sobre">Sobre</a>
         <a href="#disciplinas">Disciplinas</a>
+        <a href="#projetos">Projetos</a>
         <button class="theme-toggle" onclick="toggleTheme()">💻</button>
         <a href="#aprendizado">Aprendizado</a>
         <a href="#contato">Contato</a>
@@ -479,6 +498,14 @@
             </div>
         </section>
 
+        <!-- Projetos Dinâmicos do GitHub -->
+        <section id="projetos">
+            <h2>💻 Meus Projetos no GitHub</h2>
+            <div class="cards-grid" id="container-projetos">
+                <p class="loading-text">Buscando projetos ativos no GitHub...</p>
+            </div>
+        </section>
+
         <!-- Aprendizado -->
         <section id="aprendizado">
             <h2>🎓 Meu Aprendizado</h2>
@@ -515,7 +542,7 @@
             </div>
         </section>
 
-        <!-- Contato -->
+        <!-- Contato (EMAIL CORRIGIDO) -->
         <section id="contato">
             <h2>📧 Contato</h2>
             <div class="about">
@@ -524,23 +551,25 @@
                 <div class="social-links">
                     <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-                    <a href="geovannagabrielle191@gmail.com" target="_blank">Email</a>
+                    <a href="mailto:geovannagabrielle191@gmail.com">Email</a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer (EMAIL CORRIGIDO) -->
     <footer>
         <div class="social-links">
             <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-            <a href="mailto:geovannagabrielle191@gmail.com" target="_blank">Email</a>
+            <a href="mailto:geovannagabrielle191@gmail.com">Email</a>
         </div>
         <p>&copy; 2026 PortfolioHUB • Geovanna</p>
         <p>Desenvolvido com HTML, CSS e JavaScript</p>
     </footer>
 
     <script>
+        // Funções do Modo Escuro e Tema
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
@@ -552,12 +581,51 @@
             button.textContent = '💻';
         }
 
+        // Função que consome a API do GitHub
+        async function carregarProjetosGithub() {
+            const usuario = 'nanaassss'; 
+            const url = `https://api.github.com/users/${usuario}/repos?sort=updated&per_page=6`;
+            
+            try {
+                const resposta = await fetch(url);
+                if (!resposta.ok) throw new Error('Erro ao buscar dados');
+                
+                const repositorios = await resposta.json();
+                const containerProjetos = document.getElementById('container-projetos'); 
+                
+                containerProjetos.innerHTML = ''; 
+                
+                repositorios.forEach(repo => {
+                    if (!repo.fork) { 
+                        const card = `
+                            <div class="card">
+                                <div class="card-icon">📂</div>
+                                <h3>${repo.name}</h3>
+                                <p>${repo.description || 'Projeto acadêmico sem descrição definida no GitHub.'}</p>
+                                <a href="${repo.html_url}" class="projeto-link" target="_blank">Ver Repositório →</a>
+                            </div>
+                        `;
+                        containerProjetos.innerHTML += card;
+                    }
+                });
+
+                if(containerProjetos.innerHTML === '') {
+                    containerProjetos.innerHTML = '<p>Nenhum repositório público encontrado.</p>';
+                }
+
+            } catch (erro) {
+                console.error(erro);
+                document.getElementById('container-projetos').innerHTML = '<p>Erro ao carregar os projetos do GitHub.</p>';
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
             }
             updateThemeButton();
+            carregarProjetosGithub();
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
