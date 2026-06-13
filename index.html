@@ -289,6 +289,24 @@
             margin-bottom: 10px;
         }
 
+        /* CSS DOS PROJETOS DINÂMICOS (GITHUB API) */
+        .loading-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .projeto-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.2s ease;
+        }
+        .projeto-link:hover {
+            color: var(--primary-light);
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -426,15 +444,14 @@
     <nav>
         <a href="#sobre">Sobre</a>
         <a href="#disciplinas">Disciplinas</a>
-        <button class="theme-toggle" onclick="toggleTheme()">💻</button>
+        <a href="#projetos">Projetos</a> <button class="theme-toggle" onclick="toggleTheme()">💻</button>
         <a href="#aprendizado">Aprendizado</a>
         <a href="#contato">Contato</a>
     </nav>
 
     <main>
-        <!-- Sobre -->
         <section id="sobre">
-            <h2>👋 Sobre Mim</h2>
+            <h2>👋 Sobre Me</h2>
             <div class="about">
                 <h3>Geovanna - Estudante de ADS (1º Semestre)</h3>
                 <p>
@@ -449,7 +466,6 @@
             </div>
         </section>
 
-        <!-- Disciplinas -->
         <section id="disciplinas">
             <h2>📚 Disciplinas do 1º Semestre</h2>
             <div class="cards-grid">
@@ -468,107 +484,4 @@
                 <div class="card">
                     <div class="card-icon">🧠</div>
                     <h3>Lógica de Programação</h3>
-                    <p>Algoritmos, estruturas de controle e desenvolvimento de pensamento computacional.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🗄️</div>
-                    <h3>Banco de Dados</h3>
-                    <p>Conceitos de dados, modelagem e introdução aos sistemas gerenciadores de banco de dados.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Aprendizado -->
-        <section id="aprendizado">
-            <h2>🎓 Meu Aprendizado</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>Algoritmos</h4>
-                    <p>Desenvolvimento de lógica para resolução de problemas</p>
-                </div>
-
-                <div class="skill-item">
-                    <h4>Modelagem de Dados</h4>
-                    <p>Conceitos de DER e estruturação de informações</p>
-                </div>
-
-                <div class="skill-item">
-                    <h4>Sistemas Operacionais</h4>
-                    <p>Funcionamento básico e componentes de um SO</p>
-                </div>
-
-                <div class="skill-item">
-                    <h4>Git & GitHub</h4>
-                    <p>Versionamento e colaboração em projetos</p>
-                </div>
-
-                <div class="skill-item">
-                    <h4>HTML & CSS</h4>
-                    <p>Desenvolvimento web básico e criação deste portfólio</p>
-                </div>
-
-                <div class="skill-item">
-                    <h4>Pensamento Computacional</h4>
-                    <p>Abstração e decomposição de problemas</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contato -->
-        <section id="contato">
-            <h2>📧 Contato</h2>
-            <div class="about">
-                <h3>Vamos Conectar!</h3>
-                <p>Estou sempre aberta a aprender, colaborar e conversar sobre desenvolvimento de software e tecnologia.</p>
-                <div class="social-links">
-                    <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-                    <a href="geovannagabrielle191@gmail.com" target="_blank">Email</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/nanaassss" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/geovanna-gabrielle-dantas-carvalho-29aa193b0" target="_blank">LinkedIn</a>
-            <a href="mailto:geovannagabrielle191@gmail.com" target="_blank">Email</a>
-        </div>
-        <p>&copy; 2026 PortfolioHUB • Geovanna</p>
-        <p>Desenvolvido com HTML, CSS e JavaScript</p>
-    </footer>
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-            updateThemeButton();
-        }
-
-        function updateThemeButton() {
-            const button = document.querySelector('.theme-toggle');
-            button.textContent = '💻';
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-            updateThemeButton();
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                    <p>Algoritmos, estruturas de controle e desenvolvimento de pensamento computacional.</p
